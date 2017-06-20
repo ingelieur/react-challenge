@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import { Header, NameForm, TonaldSays, News, Footer } from './components'
 
 class App extends React.Component {
@@ -65,13 +65,15 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div className="App">
-        <Header />
-        <NameForm handleForm={this.handleForm} />
-        {this.state.tonaldQuote ? <TonaldSays quotes={this.state.tonaldQuote}/> : null}
-        {this.state.news ? <News news={this.state.news} /> : null}
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Route exact path="/" component={(props) => <NameForm handleForm={this.handleForm} {...props}/>} />
+          <Route exact path="/sad-world" component={(props) => this.state.tonaldQuote ? <TonaldSays quotes={this.state.tonaldQuote} {...props}/> : null} />
+          {this.state.news ? <News news={this.state.news} /> : null}
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }
