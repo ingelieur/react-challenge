@@ -1,6 +1,26 @@
 import React from 'react'
 
 class NameForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: null,
+      location: null
+    }
+  }
+
+  setName(name) {
+    this.setState({
+      name: name
+    })
+  }
+
+  setLocation(loc) {
+    this.setState({
+      location: loc
+    })
+  }
+
   render () {
     return (
       <div className="container">
@@ -11,21 +31,31 @@ class NameForm extends React.Component {
             <p className="title" style={{color: 'white',}}>
               Please input your name and origin.
               <br />
-              Then I'll tell you the bad news.
+              Then I'll tell you some bad news.
             </p>
             <div className="field">
               <label className="label">Nickname</label>
               <p className="control">
-                <input className="input" type="text" placeholder="Nickname" />
+                <input
+                  onChange={(e) => this.setName(e.target.value)}
+                  className="input"
+                  type="text"
+                  placeholder="Nickname"
+                />
               </p>
             </div>
             <div className="field">
               <label className="label">Country</label>
               <p className="control">
-                <input className="input" type="text" placeholder="Where do you come from?" />
+                <input
+                  onChange={(e) => this.setLocation(e.target.value)}
+                  className="input"
+                  type="text"
+                  placeholder="Where do you come from?"
+                />
               </p>
             </div>
-            <a className="button is-primary">Submit</a>
+            <a onClick={() => this.props.handleForm(this.state)} className="button is-primary">Submit</a>
           </div>
         </div>
       </div>
