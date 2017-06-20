@@ -11,10 +11,17 @@ class App extends React.Component {
       news: null,
       name: null,
       location: null,
+      randomFace: null,
     }
     this.handleForm = this.handleForm.bind(this)
     this.tonaldSays = this.tonaldSays.bind(this)
     this.badNews = this.badNews.bind(this)
+  }
+  componentDidMount () {
+    let randomFace = Math.floor(Math.random() * 50000)
+    this.setState({
+      randomFace
+    })
   }
   tonaldSays (name) {
     console.log('name ', name)
@@ -62,7 +69,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Header />
+          <Header randomFace={this.state.randomFace} />
           <Route exact path="/" component={(props) => <NameForm handleForm={this.handleForm} {...props}/>} />
           <Route exact path="/sad-world" component={(props) => <Results news={this.state.news} quote={this.state.tonaldQuote} {...props} />} />
           {/*<Route exact path="/sad-world" component={(props) => this.state.tonaldQuote ? <TonaldSays quotes={this.state.tonaldQuote} {...props}/> : null} />

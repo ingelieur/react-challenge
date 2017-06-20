@@ -28,7 +28,7 @@ class News extends React.Component {
       <div className="container">
         <br />
         <br />
-        <p className="subtitle">If that's not depressing enough, here are some news from your country. <br />
+        <p className="subtitle has-text-centered">If that's not depressing enough, here are some news from your country. <br />
           Count how many of them are good news? <br />
           Is there even one of them?</p>
         <div className="columns is-multiline">
