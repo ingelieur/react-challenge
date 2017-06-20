@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Header, NameForm, TonaldSays } from './components'
+import { Header, NameForm, TonaldSays, Footer } from './components'
 
 class App extends React.Component {
   constructor () {
@@ -41,6 +41,9 @@ class App extends React.Component {
         <Header />
         <NameForm handleForm={this.handleForm} />
         {this.state.tonaldQuote ? <TonaldSays quotes={this.state.tonaldQuote}/> : null}
+        <br />
+        <br />
+        <Footer />
       </div>
     );
   }
