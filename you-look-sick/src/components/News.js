@@ -1,39 +1,38 @@
 import React from 'react'
 
-class News extends React.Component {
-  render () {
-    if (this.props.news === null) {
-      return (
-        <div className="container">
-          <br />
-          <br />
-          <blockquote className="title has-text-centered">loading ...</blockquote>
-          <br />
-          <br />
-        </div>
-      )
-    }
-    else if (typeof this.props.news === 'string') {
-      return (
-        <div className="container">
-          <br />
-          <br />
-          <blockquote className="title has-text-centered">{this.props.news}</blockquote>
-          <br />
-          <br />
-        </div>
-      )
-    }
+function News (props) {
+  if (props.news === null) {
     return (
       <div className="container">
         <br />
         <br />
-        <p className="subtitle has-text-centered">The most depressing thing about the quote above is that <br />it's so possible that those words are coming from the POTUS.<br/ ><br />Well, if that's not depressing enough, here are some news from your country. <br />
-          Please count, how many of them are good news? <br />
-          Is there even one of them?</p>
+        <blockquote className="title has-text-centered">loading ...</blockquote>
+        <br />
+        <br />
+      </div>
+    )
+  }
+  else if (typeof props.news === 'string') {
+    return (
+      <div className="container">
+        <br />
+        <br />
+        <blockquote className="title has-text-centered">{props.news}</blockquote>
+        <br />
+        <br />
+      </div>
+    )
+  }
+  else {
+    return (
+      <div className="container">
+        <br />
+        <br />
+        <p className="subtitle has-text-centered">The most depressing thing about the quote above is that <br />it's so possible that those words are coming from the POTUS.<br/ ><br />Well, if that's not depressing enough, here are some news from your country. <br />Please count, how many of them are good news? <br />Is there even one of them?
+        </p>
         <br />
         <div className="columns is-multiline">
-          {this.props.news.map((info, index) => {
+          {props.news.map((info, index) => {
             return (
               <div key={index} className="column is-one-third">
                 <div className="card">
@@ -44,25 +43,26 @@ class News extends React.Component {
                       </figure>) : (
                         <figure className="image is-4by3">
                           <img src="https://dummyimage.com/vga" alt="credit: NYT" />
-                        </figure>)}
-                      </div>
-                      <div className="card-content">
-                        <div className="content">
-                          <p className="subtitle">{info.headline.main}</p>
-                          <small>{info.byline.original}</small>
-                          <br />
-                          <br />
-                          {info.snippet}
-                          <br />
-                          <br />
-                          <a href={info.web_url}>Read More</a>
-                          <br />
-                        </div>
-                      </div>
+                        </figure>)
+                    }
+                  </div>
+                  <div className="card-content">
+                    <div className="content">
+                      <p className="subtitle">{info.headline.main}</p>
+                      <small>{info.byline.original}</small>
+                      <br />
+                      <br />
+                      {info.snippet}
+                      <br />
+                      <br />
+                      <a href={info.web_url}>Read More</a>
+                      <br />
                     </div>
-                  </div>)
-          })
-          }
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     )

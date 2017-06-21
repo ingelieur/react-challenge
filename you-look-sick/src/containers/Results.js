@@ -1,12 +1,13 @@
 import React from 'react'
-import { TonaldSays, News } from '.'
 import { Redirect, Link } from 'react-router-dom'
 import Axios from 'axios'
 
+import { TonaldSays, News } from '../components'
+import store from '../store/configureStore'
 
 class Results extends React.Component {
-  constructor (props) {
-    super(props)
+  constructor () {
+    super()
     this.state = {
       quote: null,
       news: null,
@@ -22,9 +23,9 @@ class Results extends React.Component {
   }
 
   componentDidMount () {
-    if(this.props.isSubmitted) {
-      this.tonaldSays(this.props.name)
-      this.badNews(this.props.loc)
+    if(store.getState().form.isSubmitted) {
+      this.tonaldSays(store.getState().form.name)
+      this.badNews(store.getState().form.loc)
     } else {
       this.redir()
     }
@@ -65,7 +66,7 @@ class Results extends React.Component {
   }
 
   render () {
-    if(this.props.isSubmitted) {
+    if(store.getState().form.isSubmitted) {
       return (
         <div>
           <TonaldSays quote={this.state.quote}/>
@@ -76,7 +77,6 @@ class Results extends React.Component {
         </div>
       )
     }
-    console.log(this.redir);
     return this.redir()
   }
 }
