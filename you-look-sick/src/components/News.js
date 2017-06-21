@@ -28,9 +28,10 @@ class News extends React.Component {
       <div className="container">
         <br />
         <br />
-        <p className="subtitle has-text-centered">If that's not depressing enough, here are some news from your country. <br />
-          Count how many of them are good news? <br />
+        <p className="subtitle has-text-centered">The most depressing thing about the quote above is that <br />it's so possible that those words are coming from the POTUS.<br/ ><br />Well, if that's not depressing enough, here are some news from your country. <br />
+          Please count, how many of them are good news? <br />
           Is there even one of them?</p>
+        <br />
         <div className="columns is-multiline">
           {this.props.news.map((info, index) => {
             return (

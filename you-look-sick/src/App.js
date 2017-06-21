@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { BrowserRouter, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Header, NameForm, Results, Footer } from './components'
 
 class App extends React.Component {
@@ -12,6 +12,7 @@ class App extends React.Component {
       name: null,
       location: null,
       randomFace: null,
+      isSubmitted: false,
     }
     this.handleForm = this.handleForm.bind(this)
     this.tonaldSays = this.tonaldSays.bind(this)
@@ -59,7 +60,8 @@ class App extends React.Component {
   handleForm (inputForm) {
     this.setState({
       name: inputForm.name,
-      location: inputForm.location
+      location: inputForm.location,
+      isSubmitted: true
     }, () => {
       this.tonaldSays(this.state.name)
       this.badNews(this.state.location)
@@ -69,16 +71,16 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Header randomFace={this.state.randomFace} />
-          <Route exact path="/" component={(props) => <NameForm handleForm={this.handleForm} {...props}/>} />
-          <Route exact path="/sad-world" component={(props) => <Results news={this.state.news} quote={this.state.tonaldQuote} {...props} />} />
-          {/*<Route exact path="/sad-world" component={(props) => this.state.tonaldQuote ? <TonaldSays quotes={this.state.tonaldQuote} {...props}/> : null} />
-          {this.state.news ? <News news={this.state.news} /> : null} */}
-          <Footer />
+          <Header />
+          <Switch>
+            <Route exact path="/" component={(props) => <NameForm handleForm={this.handleForm} {...props}/>} />
+            <Route path="/sad-world" component={(props) => <Results news={this.state.news} quote={this.state.tonaldQuote} isSubmitted={this.state.isSubmitted} {...props} />} />
+          </Switch>
+          <Footer randomFace={this.state.randomFace} />
         </div>
       </BrowserRouter>
     );
-  }
+}
 }
 
 export default App
