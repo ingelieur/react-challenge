@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Header, NameForm, Results, Footer } from './components'
+import { Header, NameForm, Results, Footer, FailPage } from './components'
 
 class App extends React.Component {
   constructor () {
@@ -73,8 +73,9 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <Switch>
-            <Route exact path="/" component={(props) => <NameForm handleForm={this.handleForm} {...props}/>} />
             <Route path="/sad-world" component={(props) => <Results news={this.state.news} quote={this.state.tonaldQuote} isSubmitted={this.state.isSubmitted} {...props} />} />
+            <Route exact path="/" component={(props) => <NameForm handleForm={this.handleForm} {...props}/>} />
+            <Route path="" component={FailPage} />
           </Switch>
           <Footer randomFace={this.state.randomFace} />
         </div>
