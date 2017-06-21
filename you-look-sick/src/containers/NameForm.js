@@ -1,22 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-import store from '../store/configureStore'
 import { handleForm, handleName, handleLoc } from '../actions'
 
 class NameForm extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      name: store.getState().form.name,
-      location: store.getState().form.loc,
-    }
-    store.subscribe(() => {
-      this.setState({
-        name: store.getState().form.name,
-        loc: store.getState().form.loc,
-      })
-    })
+  constructor(props) {
+    super(props)
   }
 
   render () {
@@ -27,15 +17,15 @@ class NameForm extends React.Component {
         <div className="columns">
           <div className="column is-half is-offset-one-quarter">
             <p className="title" style={{color: 'white',}}>
-              {this.state.name === null ? `Please input your name and origin.` : null}
+              {this.props.form.name === null ? `Please input your name and origin.` : null}
               <br />
-              {this.state.name === null ? `Then` : `Hi ${this.state.name}!`} I'll tell you some bad news.
+              {this.props.form.name === null ? `Then` : `Hi ${this.props.form.name}!`} I'll tell you some bad news.
             </p>
             <div className="field">
               <label className="label">Nickname</label>
               <p className="control">
                 <input
-                  onChange={(event) => store.dispatch(handleName(event.target.value))}
+                  onChange={(event) => this.props.handleName(event.target.value)}
                   className="input"
                   type="text"
                   placeholder="Nickname"
@@ -46,14 +36,14 @@ class NameForm extends React.Component {
               <label className="label">Country</label>
               <p className="control">
                 <input
-                  onChange={(event) => store.dispatch(handleLoc(event.target.value))}
+                  onChange={(event) => this.props.handleLoc(event.target.value)}
                   className="input"
                   type="text"
                   placeholder="Where do you come from?"
                 />
               </p>
             </div>
-            <Link to="/sad-world" onClick={() => store.dispatch(handleForm())} className="button is-primary">Submit</Link>
+            <Link to="/sad-world" onClick={() => this.props.handleForm()} className="button is-primary">Submit</Link>
           </div>
         </div>
       </div>
@@ -61,4 +51,18 @@ class NameForm extends React.Component {
   }
 }
 
-export default NameForm
+const mapStateToProps = (state) => {
+  return {
+    form: state.form
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleForm: () => dispatch(handleForm()),
+    handleName: (name) => dispatch(handleName(name)),
+    handleLoc: (loc) => dispatch(handleLoc(loc)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NameForm)
