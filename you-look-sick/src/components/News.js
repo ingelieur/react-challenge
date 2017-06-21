@@ -43,7 +43,7 @@ function News (props) {
                         <img src={`http://nytimes.com/${info.multimedia[0].url}`} alt="credit: NYT" />
                       </figure>) : (
                         <figure className="image is-4by3">
-                          <img src="https://dummyimage.com/vga" alt="credit: NYT" />
+                          <img src="https://unsplash.it/g/400/300?random" alt="credit: Unsplash" />
                         </figure>)
                     }
                   </div>
