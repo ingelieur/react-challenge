@@ -5,14 +5,15 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type === "HANDLE_FORM") {
-    return {...state, isSubmitted: true}
+  switch (action.type) {
+    case "HANDLE_FORM":
+      return {...state, isSubmitted: true}
+
+    case "HANDLE_NAME":
+      return {...state, name: action.payload}
+    case "HANDLE_LOC":
+      return {...state, loc: action.payload}
+    default:
+      return {...state}
   }
-  else if (action.type === "HANDLE_NAME") {
-    return {...state, name: action.payload}
-  }
-  else if (action.type === "HANDLE_LOC") {
-    return {...state, loc: action.payload}
-  }
-  return state
 }

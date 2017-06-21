@@ -3,9 +3,10 @@ import React from 'react'
 function TonaldSays (props) {
   if (props.quote === null) {
     return (
-      <div className="container">
+      <div className="container has-text-centered">
         <br />
-        <blockquote className="title has-text-centered">loading ...</blockquote>
+        {/*<blockquote className="title has-text-centered">loading ...</blockquote>*/}
+        <a className="button is-large is-loading is-white is-outlined" />
         <br />
       </div>
     )
