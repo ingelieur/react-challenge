@@ -40,7 +40,7 @@ function News (props) {
                   <div className="card-image">
                     { info.multimedia.length > 0 ? (
                       <figure className="image is-4by3">
-                        <img src={`http://nytimes.com/${info.multimedia[0].url}`} alt="credit: NYT" />
+                        <img src={`https://nytimes.com/${info.multimedia[0].url}`} alt="credit: NYT" />
                       </figure>) : (
                         <figure className="image is-4by3">
                           <img src="https://unsplash.it/g/400/300?random" alt="credit: Unsplash" />
