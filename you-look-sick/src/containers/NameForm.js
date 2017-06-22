@@ -5,9 +5,6 @@ import { connect } from 'react-redux'
 import { handleForm, handleName, handleLoc } from '../actions'
 
 class NameForm extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   render () {
     return (

@@ -7,7 +7,7 @@ function News (props) {
         <br />
         <br />
         {/*<blockquote className="title has-text-centered">loading ...</blockquote>*/}
-        <a className="button is-large is-loading is-white is-outlined" />
+        <a className="button is-large is-loading is-white is-outlined">loading</a>
         <br />
         <br />
       </div>
