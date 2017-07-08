@@ -1,5 +1,7 @@
 import Axios from 'axios'
 
+import * as ActionTypes from './actionTypes'
+
 export const tonaldSays = (name) => {
   return (dispatch) => {
     Axios.get(`https://api.whatdoestrumpthink.com/api/v1/quotes/personalized?q=${name}`)
@@ -44,20 +46,20 @@ export const badNews = (loc) => {
 
 export const handleForm = () => {
   return {
-    type: "HANDLE_FORM",
+    type: ActionTypes.HANDLE_FORM,
   }
 }
 
 export const handleName = (name) => {
   return {
-    type: "HANDLE_NAME",
+    type: ActionTypes.HANDLE_NAME,
     payload: name,
   }
 }
 
 export const handleLoc = (loc) => {
   return {
-    type: "HANDLE_LOC",
+    type: ActionTypes.HANDLE_LOC,
     payload: loc,
   }
 }

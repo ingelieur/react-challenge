@@ -1,3 +1,5 @@
+import { HANDLE_FORM, HANDLE_NAME, HANDLE_LOC } from '../actions/actionTypes'
+
 const initialState = {
   name: null,
   loc: null,
