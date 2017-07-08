@@ -30,7 +30,7 @@ class Results extends React.Component {
           <TonaldSays quote={this.props.results.quote}/>
           <News news={this.props.results.news}/>
           <div className="has-text-centered">
-            <Link to="/" className="button is-primary is-outlined is-large">Start Over</Link>
+            <Link to="/" onClick={() => this.props.reset()} className="button is-primary is-outlined is-large">Start Over</Link>
           </div>
         </div>
       )
@@ -50,6 +50,7 @@ const mapStateToDispatch = (dispatch) => {
   return {
     tonaldSays: (name) => dispatch(tonaldSays(name)),
     badNews: (loc) => dispatch(badNews(loc)),
+    reset: () => dispatch(),
   }
 }
 
