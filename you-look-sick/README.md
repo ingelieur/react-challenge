@@ -1,7 +1,7 @@
 # React - Redux Experiment
 
 ##### A simple journey from a simple React to React-Redux and in the end Redux-Saga.   
-
+<br/>
 **Steps:**
 - [No redux](https://github.com/ingelieur/react-challenge/tree/01-no-redux/you-look-sick)
 - [Vanilla redux](https://github.com/ingelieur/react-challenge/tree/02-vanilla-redux/you-look-sick)
